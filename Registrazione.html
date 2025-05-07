@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione - Domus Vitae</title>
+    <link rel = "stylesheet" href="style.css" type = "text/css">
+    
+    <script>
+    function registrati() {
+      var cont = document.getElementById("contenitoreDati");
+
+      cont.innerHTML = "";
+
+      var nome = document.getElementById("nome").value;
+      var cognome = document.getElementById("cognome").value;
+      var email = document.getElementById("email").value;
+      var nascita = document.getElementById("nascita").value;
+
+      var sesso = "";
+      var radios = document.getElementsByName("sesso");
+      for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          sesso = radios[i].value;
+          break;
+        }
+      }
+
+      var interessi = "";
+      var checkboxes = document.getElementsByName("interessi");
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          interessi += checkboxes[i].value + ", ";
+        }
+      }
+
+      var titoloStudio = document.getElementById("titoloStudio").value;
+      var commento = document.getElementById("commento").value;
+
+      cont.innerHTML += "<p><b>Registrazione confermata per:</b> " + nome + " " + cognome + "</p>";
+      cont.innerHTML += "<p>Email: <b>" + email + "</b></p>";
+      cont.innerHTML += "<p>Data di nascita: <b>" + nascita + "</b></p>";
+      cont.innerHTML += "<p>Sesso: <b>" + sesso + "</b></p>";
+      cont.innerHTML += "<p>Interessi: <b>" + interessi + "</b></p>";
+      cont.innerHTML += "<p>Titolo di studio: <b>" + titoloStudio + "</b></p>";
+      cont.innerHTML += "<p>Commento: <i>" + commento + "</i></p><hr>";
+    }
+
+      function resetPagina() {
+      document.getElementById("formRegistrazione").reset();
+    }
+    </script>
+</head>
+
+
+<body>
+    <div id="titolo">
+        <b>Registrazione Utente</b>
+    </div>
+
+    <div id="navbar">
+        <ul>
+            <li><a href="Index.html">Home Page</a></li>
+            <li><a href="Presentazione.html">Chi Siamo</a></li>
+            <li><a href="Galleria.html">Galleria</a></li>
+            <li><a href="Registrazione.html">Registrazione</a></li>
+            <li><a href="Contatti.html">Contatti</a></li>
+        </ul>
+    </div>
+
+    <div id="contenitoreForm">
+        <form id="formRegistrazione">
+            <input type="text" id="nome" placeholder="Nome" required><br><br>
+            <input type="text" id="cognome" placeholder="Cognome" required><br><br>
+            <input type="email" id="email" placeholder="Email" required><br><br>
+            <input type="password" id="password" placeholder="Password" required><br><br>
+
+            <label>Data di nascita:</label><br>
+            <input type="date" id="nascita" required><br><br>
+
+            <label>Sesso:</label><br>
+            <input type="radio" name="sesso" value="Maschio" required> Maschio
+            <input type="radio" name="sesso" value="Femmina"> Femmina<br><br>
+
+            <label>Interessi:</label><br>
+            <input type="checkbox" name="interessi" value="Sport"> Sport
+            <input type="checkbox" name="interessi" value="Musica"> Musica
+            <input type="checkbox" name="interessi" value="Viaggi"> Viaggi
+            <input type="checkbox" name="interessi" value="Tecnologia"> Tecnologia<br><br>
+
+            <label>Titolo di studio:</label><br>
+            <select id="titoloStudio">
+                <option value="Scegli">Scegli</option>
+                <option value="Licenza media">Licenza media</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Laurea triennale">Laurea triennale</option>
+                <option value="Laurea magistrale">Laurea magistrale</option>
+                <option value="Altro">Altro</option>
+            </select><br><br>
+
+            <label>Commento:</label><br>
+            <textarea id="commento" rows="4" cols="40" placeholder="Scrivi qui un commento..."></textarea><br><br>
+
+            <input type="button" class="bottone" value="Registrati" onclick="registrati()">
+            <input type="button" class="bottone" value="Reset" onclick="resetPagina()">
+        </form>
+    </div>
+
+    <div id="contenitoreDati"></div>
+
+    <div class="PièDiPagina">
+        <p>&copy; 1982 - 2025 Domus Vitae. Tutti i diritti riservati.</p>
+    </div>
+</body>
+</html>
